@@ -9,7 +9,7 @@ const port = 3000
 app.use(express.json())
 
 app.get('/', (_, res) => {
-    res.redirect('/index');
+    res.redirect('/public');
 })
 
 app.get('/:directory(*)', (req, res) => {
