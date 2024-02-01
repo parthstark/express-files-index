@@ -1,11 +1,14 @@
 const express = require("express")
 const fs = require("fs")
 const path = require('path');
+const cors = require("cors")
+
 const app = express()
 
 const port = 3000
 
 app.use(express.json())
+app.use(cors());
 
 app.get('/', (_, res) => {
     res.redirect('/index');
@@ -13,7 +16,7 @@ app.get('/', (_, res) => {
 
 app.get('/:directory(*)', (req, res) => {
     const directory = req.params.directory
-    const filePath = `./${directory}`
+    const filePath = path.join(process.cwd(), directory);
 
     fs.stat(filePath, (err, stats) => {
         if (err) {
