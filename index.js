@@ -18,7 +18,14 @@ app.get('/:directory(*)', (req, res) => {
     fs.stat(filePath, (err, stats) => {
         if (err) {
             res.status(500).send(`
-                <h3>file not found</h3>
+                <html>
+                    <head>
+                        <title>psk index</title>
+                    </head>
+                    <body>
+                        <h3>File not found</h3>
+                    </body>
+                </html>
             `)
             return;
         }
