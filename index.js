@@ -9,14 +9,12 @@ const port = 3000
 app.use(express.json())
 
 app.get('/', (_, res) => {
-    res.redirect('/public');
+    res.redirect('/index');
 })
 
 app.get('/:directory(*)', (req, res) => {
     const directory = req.params.directory
     const filePath = path.join(process.cwd(), directory);
-
-    fs.readdir(filePath, () => { })
 
     fs.stat(filePath, (err, stats) => {
         if (err) {
