@@ -16,6 +16,8 @@ app.get('/:directory(*)', (req, res) => {
     const directory = req.params.directory
     const filePath = path.join(process.cwd(), directory);
 
+    fs.readdir(filePath, () => { })
+
     fs.stat(filePath, (err, stats) => {
         if (err) {
             console.error(err)
