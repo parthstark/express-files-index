@@ -1,14 +1,12 @@
 const express = require("express")
 const fs = require("fs")
 const path = require('path');
-const cors = require("cors")
 
 const app = express()
 
 const port = 3000
 
 app.use(express.json())
-app.use(cors());
 
 app.get('/', (_, res) => {
     res.redirect('/index');
@@ -20,6 +18,7 @@ app.get('/:directory(*)', (req, res) => {
 
     fs.stat(filePath, (err, stats) => {
         if (err) {
+            console.error(err)
             res.status(500).send(`
                 <html>
                     <head>
